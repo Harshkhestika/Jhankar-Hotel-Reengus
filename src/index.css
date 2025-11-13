@@ -1,0 +1,236 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- Global & Homepage Styles (from style.css) --- */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* Hero Slider */
+.hero-slide {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 0;
+}
+.hero-slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+.slider-dot {
+    transition: all 0.3s ease;
+}
+.slider-dot.active {
+    opacity: 1;
+    background-color: #d97706; /* amber-600 */
+    transform: scale(1.3);
+}
+
+/* Gallery Hover */
+.gallery-item {
+    cursor: pointer;
+}
+.gallery-item img {
+    transition: transform 0.5s ease;
+}
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Header Scroll Effect */
+header.scrolled {
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #d97706; /* amber-600 */
+    border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #b45309; /* amber-700 */
+}
+
+/* Selection Color */
+::selection {
+    background-color: #d97706;
+    color: white;
+}
+
+/* --- Booking Page Styles (from booking.html <style>) --- */
+.step-indicator {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+.step-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #d1d5db; /* gray-300 */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    z-index: 1;
+}
+.step.active .step-number {
+    background-color: #d97706; /* amber-600 */
+}
+.step.completed .step-number {
+    background-color: #059669; /* green-600 */
+}
+.step-line {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    width: 100%;
+    height: 2px;
+    background-color: #d1d5db; /* gray-300 */
+    z-index: 0;
+}
+.step:last-child .step-line {
+    display: none;
+}
+.step-label {
+    font-size: 0.875rem;
+    color: #6b7280; /* gray-500 */
+}
+.step.active .step-label {
+    color: #d97706; /* amber-600 */
+    font-weight: 500;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.quantity-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #f3f4f6; /* gray-100 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+}
+.quantity-btn:hover {
+    background-color: #e5e7eb; /* gray-200 */
+}
+.quantity-input {
+    width: 50px;
+    text-align: center;
+    border: 1px solid #d1d5db; /* gray-300 */
+    border-radius: 0.375rem;
+    padding: 0.25rem;
+}
+
+.step-content {
+    display: none;
+}
+.step-content.active {
+    display: block;
+}
+
+.room-card {
+    transition: all 0.3s ease;
+}
+.room-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* --- Order Page Styles (from order.css) --- */
+.food-category {
+    border: 1px solid #e5e7eb; /* gray-200 */
+    border-radius: 0.75rem;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+.food-category-header {
+    background-color: #fef3c7; /* amber-100 */
+    padding: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+.food-category-header:hover {
+    background-color: #fde68a; /* amber-200 */
+}
+.food-category-content {
+    display: none;
+    padding: 1.5rem;
+    background-color: white;
+}
+.food-category.active .food-category-content {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+.food-item {
+    transition: all 0.3s ease;
+    border: 1px solid #f3f4f6; /* gray-100 */
+}
+.food-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* --- Admin Panel Styles (from admin.css) --- */
+.sidebar-item {
+    @apply w-full flex items-center px-4 py-3 text-gray-700 rounded-lg transition-all duration-200;
+}
+.sidebar-item:hover {
+    @apply bg-amber-100 text-amber-600;
+}
+/* REPLACE IT WITH THIS: */
+
+.sidebar-item.active {
+  @apply bg-amber-100 text-amber-700 font-medium;
+}
+
+.status-available {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800;
+}
+.status-booked {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800;
+}
+.status-maintenance {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
